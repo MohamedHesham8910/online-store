@@ -1,0 +1,48 @@
+<%- include('../includes/head', {pageTitle: 'Signup'}) %>
+<link rel="stylesheet" href="styles/form.css">
+</head>
+<body>
+    <%- include('../includes/header') %>
+    <main>
+        <h1>Create an account</h1>
+        <form method="POST" action="/signup">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-element">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>    
+            </div>
+            <div class="form-element">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" required>   
+            </div>
+            <hr>
+            <div class="form-element">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-element">
+                <label for="street">Street</label>
+                <input type="text" name="street" id="street" required>
+            </div>
+            <div class="form-element">
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" required>
+            </div>
+            <div class="form-element">
+                <label for="zipCode">Zip Code</label>
+                <input type="number" name="zipCode" id="zipCode" required>
+            </div>
+            <div class="form-element">
+                <button type="submit" class="btn"> Submit </button>
+                <a href="/login">Login Instead</a>
+            </div>
+            
+
+        </form>
+    </main>
+</body>
+</html> 

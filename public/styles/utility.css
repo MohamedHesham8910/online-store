@@ -1,0 +1,16 @@
+.btn{
+    width: 8.5rem;
+    /* height: 2.5rem; */
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: var(--color-primary-500);
+    cursor: pointer;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: var(--color-primary-500-contrast);
+}
+
+.btn:hover {
+    background-color: var(--color-primary-700);
+}

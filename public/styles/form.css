@@ -1,0 +1,47 @@
+h1{
+    text-align: center;
+}
+
+form{
+    text-align: center;
+    width: 60%;
+    background-color: var(--color-gray-700);
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-medium);
+}
+
+.form-element{
+    display: flex;
+    margin: 0.5rem auto;
+    flex-direction: column;
+}
+
+.form-element label{
+    font-size: 1.5rem;
+    color: var(--color-gray-100);
+}
+
+.form-element input {
+    width: 25rem;
+    height: 2.25rem;
+    color: var(--color-gray-600);
+    border-radius: 3px;
+    margin: 0.75rem auto;
+}
+
+.form-element a{
+    font-size: 1rem;
+    text-decoration: none;
+    padding-top: 1rem;
+    color: var(--color-gray-100);
+    font-weight: bolder;
+}
+
+hr{
+    width: 90%;
+}
+
+
+
