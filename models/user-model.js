@@ -13,7 +13,7 @@ class User {
     };
   }
 
- async signup() {
+  async signup() {
     const hashedPassword = await bcrypt.hash(this.password,12);
 
     await db.getDB()
@@ -24,6 +24,14 @@ class User {
         name: this.name,
         address: this.address,
       });
+  }
+
+  getUser(){
+    return db.getDB().collection('users').findOne({email: this.email})
+  }
+
+  checkPassword(hashedPassword){
+    return bcrypt.compare(this.password,hashedPassword);
   }
 }
 
