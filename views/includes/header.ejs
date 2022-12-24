@@ -1,13 +1,59 @@
-<header>
+<header id="main-header">
   <div>
-    <a href="/">Store</a>
-    <nav>
-      <% if (locals.isAuth) { %>
-      <form method="POST" action="/logout">
-        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
-        <button>Logout</button>
-      </form>
+    <a class="nav-item" id="logo" href="/">Amazon</a>
+  </div>
+  <nav>
+    <ul class="nav-list">
+      <% if (!locals.isAdmin) { %>
+      <li><a class="nav-item" href="/">Shop</a></li>
+      <li><a class="nav-item" href="/cart">Cart</a></li>
+      <% } %> <% if (locals.isAuth && !locals.isAdmin) { %>
+      <li><a class="nav-item" href="/order">My Orders</a></li>
+      <% } %> <% if (locals.isAdmin) { %>
+      <li><a class="nav-item" href="/admin/products">Manage Products</a></li>
+      <li><a class="nav-item" href="/admin/orders">Manage Orders</a></li>
+      <% } %> <% if (!locals.isAuth) { %>
+      <li><a class="nav-item" href="/login">Login</a></li>
+      <li><a class="nav-item" href="/signup">Signup</a></li>
+      <% } %> <% if (locals.isAuth) { %>
+      <li>
+        <form method="POST" action="/logout">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>" />
+          <button class="btn">Logout</button>
+        </form>
+      </li>
       <% } %>
-    </nav>
+    </ul>
+  </nav>
+  <div id="mobile-menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </header>
+
+<aside id="mobile-menu">
+  <nav>
+    <ul class="nav-list">
+      <% if (!locals.isAdmin) { %>
+      <li><a class="nav-item" href="/">Shop</a></li>
+      <li><a class="nav-item" href="/cart">Cart</a></li>
+      <% } %> <% if (locals.isAuth && !locals.isAdmin) { %>
+      <li><a class="nav-item" href="/order">My Orders</a></li>
+      <% } %> <% if (locals.isAdmin) { %>
+      <li><a class="nav-item" href="/admin/products">Manage Products</a></li>
+      <li><a class="nav-item" href="/admin/orders">Manage Orders</a></li>
+      <% } %> <% if (!locals.isAuth) { %>
+      <li><a class="nav-item" href="/login">Login</a></li>
+      <li><a class="nav-item" href="/signup">Signup</a></li>
+      <% } %> <% if (locals.isAuth) { %>
+      <li>
+        <form method="POST" action="/logout">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>" />
+          <button class="btn">Logout</button>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</aside>

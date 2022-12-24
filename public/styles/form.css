@@ -24,8 +24,8 @@ form{
 }
 
 .form-element input {
-    width: 25rem;
-    height: 2.25rem;
+    width: 90%;
+    padding: var(--space-2);
     color: var(--color-gray-600);
     border-radius: 3px;
     margin: 0.75rem auto;
@@ -43,5 +43,13 @@ hr{
     width: 90%;
 }
 
+.error{
+    background-color: rgb(246, 143, 143);
+    color: rgb(188, 22, 22);
+    padding: 1rem;
+    width: 90%;
+    border-radius: 6px;
+    margin: 0 auto;
+}
 
 

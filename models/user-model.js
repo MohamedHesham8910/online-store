@@ -14,24 +14,30 @@ class User {
   }
 
   async signup() {
-    const hashedPassword = await bcrypt.hash(this.password,12);
+    const hashedPassword = await bcrypt.hash(this.password, 12);
 
-    await db.getDB()
-      .collection("users")
-      .insertOne({
-        email: this.email,
-        password: hashedPassword,
-        name: this.name,
-        address: this.address,
-      });
+    await db.getDB().collection("users").insertOne({
+      email: this.email,
+      password: hashedPassword,
+      name: this.name,
+      address: this.address,
+    });
   }
 
-  getUser(){
-    return db.getDB().collection('users').findOne({email: this.email})
+  getUser() {
+    return db.getDB().collection("users").findOne({ email: this.email });
   }
 
-  checkPassword(hashedPassword){
-    return bcrypt.compare(this.password,hashedPassword);
+  async existsAlready() {
+    const existingUser = await this.getUser();
+    if (existingUser) {
+      return true;
+    }
+    return false;
+  }
+
+  checkPassword(hashedPassword) {
+    return bcrypt.compare(this.password, hashedPassword);
   }
 }
 
