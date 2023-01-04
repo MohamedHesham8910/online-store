@@ -1,55 +1,102 @@
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
 
-form{
-    text-align: center;
-    width: 60%;
-    background-color: var(--color-gray-700);
-    margin: 0 auto;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow-medium);
+.form {
+  text-align: center;
+  width: 60%;
+  background-color: var(--color-gray-700);
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow-medium);
 }
 
-.form-element{
-    display: flex;
-    margin: 0.5rem auto;
-    flex-direction: column;
+.form-element {
+  display: flex;
+  margin: 0.5rem auto;
+  flex-direction: column;
 }
 
-.form-element label{
-    font-size: 1.5rem;
-    color: var(--color-gray-100);
+.form-element label {
+  font-size: 1.5rem;
+  color: var(--color-gray-100);
 }
 
 .form-element input {
-    width: 90%;
-    padding: var(--space-2);
-    color: var(--color-gray-600);
-    border-radius: 3px;
-    margin: 0.75rem auto;
+  width: 90%;
+  padding: var(--space-2);
+  color: var(--color-gray-600);
+  border-radius: 6px;
+  margin: 0.75rem auto;
 }
 
-.form-element a{
-    font-size: 1rem;
-    text-decoration: none;
-    padding-top: 1rem;
-    color: var(--color-gray-100);
-    font-weight: bolder;
+.form-element a {
+  font-size: 1rem;
+  text-decoration: none;
+  padding-top: 1rem;
+  color: var(--color-gray-100);
+  font-weight: bolder;
 }
 
-hr{
-    width: 90%;
+hr {
+  width: 90%;
 }
 
-.error{
-    background-color: rgb(246, 143, 143);
-    color: rgb(188, 22, 22);
-    padding: 1rem;
-    width: 90%;
-    border-radius: 6px;
-    margin: 0 auto;
+.error {
+  background-color: rgb(246, 143, 143);
+  color: rgb(188, 22, 22);
+  padding: 1rem;
+  width: 90%;
+  border-radius: 6px;
+  margin: 0 auto;
 }
 
+textarea {
+  border-radius: 6px;
+  height: 10rem;
+  resize: none;
+}
 
+#product-form {
+  width: 90%;
+  text-align: left;
+}
+
+#product-form input,
+#product-form textarea {
+  margin: 1rem 0;
+  width: 100%;
+}
+
+#image-upload-control {
+  display: flex;
+  align-items: center;
+}
+
+#image-upload-control input {
+  max-width: 10rem;
+}
+
+#image-upload-control img {
+  display: none;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: var(--border-radius-small);
+}
+
+#buttons-div {
+  display: flex;
+}
+
+@media (max-width: 48rem) {
+  .form {
+    width: 85%;
+  }
+
+  #buttons-div {
+    display: flex;
+    justify-content: space-between;
+  }
+}

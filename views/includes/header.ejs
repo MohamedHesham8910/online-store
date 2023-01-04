@@ -6,7 +6,7 @@
     <ul class="nav-list">
       <% if (!locals.isAdmin) { %>
       <li><a class="nav-item" href="/">Shop</a></li>
-      <li><a class="nav-item" href="/cart">Cart</a></li>
+      <li><a class="nav-item" href="/cart">Cart <span class="badge"><%= locals.cart.totalQuantity %> </span></a></li>
       <% } %> <% if (locals.isAuth && !locals.isAdmin) { %>
       <li><a class="nav-item" href="/order">My Orders</a></li>
       <% } %> <% if (locals.isAdmin) { %>
@@ -37,7 +37,7 @@
     <ul class="nav-list">
       <% if (!locals.isAdmin) { %>
       <li><a class="nav-item" href="/">Shop</a></li>
-      <li><a class="nav-item" href="/cart">Cart</a></li>
+      <li><a class="nav-item" href="/cart">Cart <span class="badge"><%= locals.cart.totalQuantity %> </span></a></li>
       <% } %> <% if (locals.isAuth && !locals.isAdmin) { %>
       <li><a class="nav-item" href="/order">My Orders</a></li>
       <% } %> <% if (locals.isAdmin) { %>

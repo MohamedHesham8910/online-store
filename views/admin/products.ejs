@@ -1,10 +1,12 @@
-<%- include('../../includes/head', {pageTitle: 'Our Products'}) %>
+<%- include('../includes/head', {pageTitle: 'Inventory'}) %>
 <link rel="stylesheet" href="/styles/products.css">
+<script src="/scripts/product-management.js" defer></script>
 </head>
 <body>
-    <%- include('../../includes/header') %>
+    <%- include('../includes/header') %>
     <main>
-        <h1>Our Products</h1>
+        <h1>Inventory</h1>
+        <a href="/admin/new-product" class="btn anchor">New Product</a>
         <ul id="products-list">
             <% for(const product of products) { %>
                 <li class="product-item">
@@ -12,12 +14,12 @@
 
                     <div class="product-content">
                         <div class="product-details">
-                            <p><%= product.title %> - <%= product.price %>$ </p>
+                            <p><%= product.title %></p>
                         </div>
                     
                         <div class="product-actions">
-                            <a href="/products/view/<%= product._id.toString()%>" class="btn">View</a>
-                            <a href="/products/add/<%= product._id.toString()%>" class="btn" data-productId=<%= product._id.toString()%> data-csrf=<%= locals.csrfToken %>>Add to Cart</a>
+                            <a href="/admin/products/update/<%= product._id.toString()%>" class="btn">Edit</a>
+                            <button class="btn" data-id= <%= product._id.toString()%> data-csrf=<%= locals.csrfToken %>>Delete</button>
                         </div> 
                     </div>
                 </li>
