@@ -1,0 +1,44 @@
+<%- include('../../includes/head', {pageTitle: 'Your Cart'}) %>
+<link rel="stylesheet" href="/styles/cart.css">
+<script src="/scripts/cart-management.js" defer></script>
+</head>
+<body>
+    <%- include('../../includes/header') %>
+    <main>
+        <h1>Your Cart</h1>
+        <ul id="cart-items">
+            <% for(const cartItem of cartItems) { %>
+                <li class="cart-item">
+                    <div>
+                        <h2><%= cartItem.product.title %></h2>
+                        <p>$<span class="item-total-price"><%= cartItem.totalPrice %></span> <i>($<%= (cartItem.totalPrice/cartItem.quantity) %>)</i></p>   
+                    </div>
+                    
+                    <form class="update-section" data-id=<%= cartItem.id %> data-csrf=<%= locals.csrfToken %>>
+                        <input type="number" value=<%= cartItem.quantity %>>
+                        <div id="update-item">
+                            <button class="btn-alt">Update</button>
+                        </div>
+                    </form>
+                </li>
+            <% } %> 
+        </ul>
+        <% if (locals.cart.items.length > 0) { %>
+            <div id="price-section">
+                <p id="price"><strong>Total: </strong> $<span><%= cartPrice %></span></p>
+                <% if (locals.isAuth) { %>
+                    <form action="/orders/" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                        <button class="btn">Buy Products</button>   
+                    </form>
+                <% } else { %>
+                    <p>Log in to proceed and purchase items.</p>
+                <% } %>
+            </div>
+        <% } else {%>
+            <h2>Your Cart is Empty. Start Shopping!</h2>
+            <a href="/" class="btn">Shop</a> 
+        <% } %>
+    </main>
+</body>
+</html> 

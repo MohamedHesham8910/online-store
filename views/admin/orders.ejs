@@ -1,9 +1,35 @@
-<%- include('../includes/head', {pageTitle: 'Orders'}) %>
+<%- include('../includes/head', {pageTitle: 'Store Orders'}) %>
+<link rel="stylesheet" href="/styles/cart.css">
+<script src="/scripts/orders-management.js" defer></script>
 </head>
 <body>
     <%- include('../includes/header') %>
     <main>
-        <h1>Orders</h1>
+        <h1>Store Orders</h1>
+        <ul id="cart-items">
+            <% for(const order of orders) { %>
+                <li class="order-item">
+                    <div>
+                        <h2>Order ID: <%= order.id %> - <span id="status-span"><%= order.status %></span></h2>
+                        <p>Order Date: <%= order.date %></p>
+                        <% for( const item of order.items) { %>
+                            <p class="order-details"><%= item.product.title %> x<%= item.quantity %> </p>
+                        <% } %>
+                        <div class="status-section">
+                            <p><strong>Total:</strong> $<%= order.totalOrderPrice %> </p>
+                            <form class="status-section" data-id=<%= order.id %> data-csrf=<%= locals.csrfToken %>>
+                                <select name="status" id="status" >
+                                    <option value="Fulfilled">Fulfilled</option>
+                                    <option value="Pending" selected>Pending</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                </select>
+                                <button class="btn">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            <% } %> 
+        </ul>
     </main>
 </body>
 </html> 

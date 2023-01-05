@@ -1,14 +1,16 @@
 const { ObjectId } = require("mongodb");
 const db = require("../data/database");
 const Product = require("../models/product-model");
+const Order = require("../models/order-model");
 
 async function getProducts(req, res) {
   const products = await db.getDB().collection("products").find().toArray();
   res.render("admin/products", { products: products });
 }
 
-function getOrders(req, res) {
-  res.render("admin/orders");
+async function getOrders(req, res) {
+  const orders = await Order.getAllOrders();
+  res.render("admin/orders",{orders: orders});
 }
 
 function getNewProduct(req, res) {

@@ -1,5 +1,6 @@
 <%- include('../../includes/head', {pageTitle: 'Our Products'}) %>
 <link rel="stylesheet" href="/styles/products.css">
+<script src="/scripts/cart-management.js" defer></script>
 </head>
 <body>
     <%- include('../../includes/header') %>
@@ -17,7 +18,7 @@
                     
                         <div class="product-actions">
                             <a href="/products/view/<%= product._id.toString()%>" class="btn">View</a>
-                            <a href="/products/add/<%= product._id.toString()%>" class="btn" data-productId=<%= product._id.toString()%> data-csrf=<%= locals.csrfToken %>>Add to Cart</a>
+                            <button class="btn" data-id=<%= product._id.toString()%> data-csrf=<%= locals.csrfToken %>>Add to Cart</button>
                         </div> 
                     </div>
                 </li>
