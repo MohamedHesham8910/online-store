@@ -19,7 +19,7 @@ async function updateOrder(event){
         alert('something went wrong');
         return;
     }
-    statusSpan.textContent = form.firstElementChild.value;
+    statusSpan.textContent = form.firstElementChild.value.toUpperCase();
 }
 
 for (const button of updateButtons) {

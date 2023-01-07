@@ -13,7 +13,9 @@
             <p>$<%= product.price %></p>
             <p id="product-description"><%= product.description %></p> 
         </div>
-        <button class="btn" data-id=<%= product._id.toString()%> data-csrf="<%= locals.csrfToken %>">Add to Cart</button>
+        <% if (!locals.isAdmin) { %>
+          <button class="btn" data-id=<%= product._id.toString()%> data-csrf="<%= locals.csrfToken %>">Add to Cart</button>
+        <% } %>
       </div>
   </main>
 </body>

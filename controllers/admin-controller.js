@@ -40,12 +40,17 @@ async function deleteProduct(req, res) {
 }
 
 async function updateProduct(req, res) {
-  console.log(req.params.id);
-  await db
-    .getDB()
-    .collection("products")
-    .deleteOne({ _id: ObjectId(req.params.id) });
-  res.redirect("/admin/products");
+  const productOriginal = await Product.checkImage(req.params.id);
+  let imageName;
+  if(!req.file){
+    imageName = productOriginal.image;
+  }
+  else{
+    imageName = req.file.filename;
+  }
+  const product = new Product({ ...req.body, image: imageName });
+  await product.updateProduct(req.params.id);
+  res.redirect('/admin/products');
 }
 
 module.exports = {

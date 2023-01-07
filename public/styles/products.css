@@ -39,6 +39,7 @@
     margin-top: 2rem;
     display: flex;
     gap: 5rem;
+    max-width: 65rem;
 }
 
 #product-details img{
@@ -47,13 +48,6 @@
     border-radius: 6px;
 }
 
-#product-info{
-    display: flex;
-    flex-direction: column;
-    align-items:flex-start;
-    justify-content: space-around;
-    height: 15rem;
-}
 
 
 

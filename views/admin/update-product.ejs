@@ -6,7 +6,7 @@
     <%- include('../includes/header') %>
     <main>
         <h1>Update Product</h1>
-        <form id="product-form" class="form" method="POST" action="/admin/products/update/<%= product._id.toString() %> ?_csrf=<%= locals.csrfToken %>" enctype="multipart/form-data">
+        <form id="product-form" class="form" method="POST" action="/admin/products/update/<%= product._id.toString()%>?_csrf=<%= locals.csrfToken %>" enctype="multipart/form-data">
             <div class="form-element">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" value="<%= product.title %>" required>

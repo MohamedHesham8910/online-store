@@ -19,8 +19,8 @@
 }
 
 .btn-alt{
-    width: 7rem;
-    height: 3rem;
+    width: 9rem;
+    height: 2.5rem;
     border: 1px solid black;
     border-radius: 5px;
     background-color: var(--color-primary-500-contrast);

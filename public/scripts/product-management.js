@@ -14,7 +14,7 @@ async function deleteProduct(event) {
     return;
   }
 
-  button.parentElement.parentElement.parentElement.parentElement.remove();
+  button.parentElement.parentElement.parentElement.remove();
 }
 
 for (const button of deleteButtons) {

@@ -13,6 +13,7 @@ const ordersRoutes = require("./routes/orders-routes");
 const csrfMiddleware = require('./middlewares/csrf-token');
 const authMiddleware = require('./middlewares/check-auth');
 const cartMiddleware = require('./middlewares/cart-init');
+const notFoundMiddleware = require('./middlewares/not-found-handler');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const checkAuthorizationMiddleware = require('./middlewares/authorization');
 const db = require("./data/database");
@@ -37,9 +38,8 @@ app.use(baseRoutes);
 app.use(authRoutes);
 app.use('/cart', cartRoutes);
 app.use('/orders', ordersRoutes);
-app.use(checkAuthorizationMiddleware);
-app.use('/admin', adminRoutes);
-
+app.use('/admin',checkAuthorizationMiddleware, adminRoutes);
+app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 db.connectToDatabase()

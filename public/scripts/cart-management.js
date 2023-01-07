@@ -3,6 +3,7 @@ const badge = document.querySelector('.nav-list .badge');
 const addButtons = document.querySelectorAll('.product-actions button');
 const updateForms = document.querySelectorAll('.update-section');
 const priceTag = document.querySelector('#price span');
+const deleteButtons = document.querySelectorAll('.update-item svg');
 
 async function updateCart(event){
     event.preventDefault();
@@ -63,8 +64,39 @@ async function addToCart(event){
     badge.textContent = quantity;
 }
 
+async function deleteItem(event){
+    const button = event.target;
+    const form = button.parentElement.parentElement;
+    const id = form.dataset.id;
+    const csrf = form.dataset.csrf;
+    const response = await fetch('/cart/items?_csrf='+csrf,{
+        method: 'PATCH',
+        body: JSON.stringify({
+            id: id,
+            quantity: 0,
+        }),
+        headers: {'Content-type':'application/json'}
+    });
+    if(!response.ok){
+        alert("something went wrong");
+        return;
+    }
+
+    const responseData = await response.json();
+    const newQuantity = responseData.totalQuantity;
+    const newTotalPrice = responseData.totalPrice;
+    badge.textContent = newQuantity;
+    priceTag.textContent = newTotalPrice;
+    button.parentElement.parentElement.parentElement.remove();
+}
+
+
 for (const button of addButton) {
     button.addEventListener('click',addToCart);
+}
+
+for (const button of deleteButtons) {
+    button.addEventListener('click',deleteItem);
 }
 
 for (const form of updateForms) {

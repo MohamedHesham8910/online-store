@@ -10,7 +10,7 @@
             <% for(const order of orders) { %>
                 <li class="order-item">
                     <div>
-                        <h2>Order ID: <%= order.id %> - <span id="status-span"><%= order.status %></span></h2>
+                        <h2>Order ID: <%= order.id %> - <span id="status-span"><%= order.status.toUpperCase() %></span></h2>
                         <p>Order Date: <%= order.date %></p>
                         <% for( const item of order.items) { %>
                             <p class="order-details"><%= item.product.title %> x<%= item.quantity %> </p>
@@ -19,9 +19,9 @@
                             <p><strong>Total:</strong> $<%= order.totalOrderPrice %> </p>
                             <form class="status-section" data-id=<%= order.id %> data-csrf=<%= locals.csrfToken %>>
                                 <select name="status" id="status" >
-                                    <option value="Fulfilled">Fulfilled</option>
-                                    <option value="Pending" selected>Pending</option>
-                                    <option value="Cancelled">Cancelled</option>
+                                    <option value="fulfilled">Fulfilled</option>
+                                    <option value="pending" selected>Pending</option>
+                                    <option value="cancelled">Cancelled</option>
                                 </select>
                                 <button class="btn">Update</button>
                             </form>

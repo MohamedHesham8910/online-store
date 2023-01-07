@@ -19,9 +19,14 @@ function get403(req,res){
     res.render('shared/403');
 }
 
+function get404(req,res){
+    res.render('shared/404');
+}
+
 module.exports = {
     getProducts:getProducts,
     get401: get401,
     get403: get403,
+    get404: get404,
     getProduct: getProduct
 }

@@ -18,7 +18,9 @@
                     
                         <div class="product-actions">
                             <a href="/products/view/<%= product._id.toString()%>" class="btn">View</a>
-                            <button class="btn" data-id=<%= product._id.toString()%> data-csrf=<%= locals.csrfToken %>>Add to Cart</button>
+                            <% if (!locals.isAdmin) { %>
+                                <button class="btn" data-id=<%= product._id.toString()%> data-csrf=<%= locals.csrfToken %>>Add to Cart</button>
+                            <% } %>
                         </div> 
                     </div>
                 </li>
